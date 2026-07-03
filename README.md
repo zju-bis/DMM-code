@@ -12,13 +12,13 @@
   </a>
 </p>
 
-> A high-performance PyTorch framework for incremental training, featuring dynamic memory allocation and optimized experience replay to mitigate catastrophic forgetting.
+> A high-performance PyTorch framework for SNN-based continual training, featuring dynamic memory allocation and optimized experience replay to mitigate catastrophic forgetting.
 
 ---
 
 ; ## 📖 Introduction
 
-; In the context of continual learning, neural networks often suffer from catastrophic forgetting when sequentially trained on new tasks. **DMM (Dual Memory Management)** provides a robust, memory-efficient solution by intelligently managing replay buffer indices and dynamically swapping memory chunks during incremental training phases. 
+; In the context of continual learning, spiking neural networks often suffer from catastrophic forgetting when sequentially trained on new tasks. **DMM (Dual Memory Management)** provides a robust, memory-efficient solution by intelligently managing replay buffer indices and dynamically swapping memory chunks during continual training phases. 
 
 ; The framework introduces a custom `swap_loss` logic, optimizing the trade-off between retaining past task knowledge and acquiring new features. 
 
@@ -26,7 +26,7 @@
 
 ; - **Efficient Experience Replay**: Advanced indexing techniques for the Replay Buffer, minimizing memory fragmentation during continuous data streams.
 ; - **Dynamic Swap Logic**: Implements a novel `swap_loss` objective (e.g., $L_{total} = L_{task} + \alpha L_{swap}$) to dynamically balance the replay of historical data and current task gradients.
-; - **Incremental Training Ready**: Native support for seamless state transitioning across multiple tasks without requiring full network retraining.
+; - **Continual Training Ready**: Native support for seamless state transitioning across multiple tasks without requiring full network retraining.
 ; - **PyTorch Native**: Fully compatible with standard PyTorch training loops and `DataLoader` mechanisms.
 
 ; ---
@@ -39,7 +39,7 @@
 
 ```bash
 1. Clone the repository
-git clone [https://github.com/yourusername/ProjectName.git](https://github.com/yourusername/ProjectName.git) #确定要上传之后修改
+git clone [https://github.com/yourusername/ProjectName.git](https://github.com/yourusername/ProjectName.git)
 cd ProjectName
 
 2. Create and activate a virtual environment (Recommended)
@@ -83,12 +83,12 @@ DMM/
 ├── exps/                   # Experiment configurations in JSON (configs for DMM, carm, miro, etc.)
 ├── logs/                   # Training logs and outputs
 ├── models/                 # Directory for different CL models
-├── nets/                   # Neural network architectures
+├── nets/                   # Spiking neural network architectures
 │   ├── layer.py            # Custom layers definitions
 │   ├── model_setting.py    # Model hyperparameters and basic settings
 │   ├── preact_resnet.py    # PreAct-ResNet implementation
 │   ├── resnet.py           # Standard ResNet implementation
-│   ├── sew_resnet.py       # SEW-ResNet implementation (typically for SNNs)
+│   ├── sew_resnet.py       # SEW-ResNet implementation 
 │   └── vgg.py              # VGG implementation
 ├── utils/                  # Utility functions (data loaders, metrics, etc.)
 ├── main.py                 # Main entry point for training and evaluation
